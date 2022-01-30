@@ -43,7 +43,7 @@ const Home = (): JSX.Element => {
     }
 
     loadProducts();
-  }, [products]);
+  }, []);
 
   function handleAddProduct(id: number) {
     addProduct(id);
