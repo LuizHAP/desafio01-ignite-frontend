@@ -65,7 +65,7 @@ const Cart = (): JSX.Element => {
               </td>
               <td>
                 <strong>{product.title}</strong>
-                <span>forma</span>
+                <span>{product.priceFormmatted}</span>
               </td>
               <td>
                 <div>

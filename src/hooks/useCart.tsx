@@ -40,10 +40,10 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
       const { data: StockProduct } = await api.get<Stock>(`/stock/${productId}`);
 
       if (productExists >= 0) {
-        if(StockProduct.amount <= updatedCart[productExists].amount) {
+        if (StockProduct.amount <= updatedCart[productExists].amount) {
 
           toast.error("Quantidade solicitada fora de estoque");
-          
+
         } else {
 
           updatedCart[productExists].amount += 1;
@@ -54,7 +54,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
       } else {
 
         const stockAmount = StockProduct.amount;
-        
+
         if (stockAmount > 0) {
           const { data: DataProduct } = await api.get<Product>(`/products/${productId}`);
 
@@ -86,7 +86,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
       if (productExists >= 0) {
         updatedCart.splice(productExists, 1);
         setCart(updatedCart);
-        localStorage.setItem("@RocketShoes:cart", JSON.stringify(updatedCart)); 
+        localStorage.setItem("@RocketShoes:cart", JSON.stringify(updatedCart));
       } else {
         throw Error()
       }
@@ -108,7 +108,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
 
       const stockAmount = StockProduct.amount;
 
-      if (amount >= stockAmount) {
+      if (amount > stockAmount) {
         return toast.error('Quantidade solicitada fora de estoque');
       }
 
@@ -119,7 +119,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
       if (productExists) {
         productExists.amount = amount;
         setCart(updatedCart);
-        localStorage.setItem("@RocketShoes:cart", JSON.stringify(updatedCart)); 
+        localStorage.setItem("@RocketShoes:cart", JSON.stringify(updatedCart));
       } else {
         throw Error();
       }
